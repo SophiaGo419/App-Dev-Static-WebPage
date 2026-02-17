@@ -10,7 +10,7 @@ body{
 /* whole container inside h=the body */
 .container {
     height: 550px;
-    width: 1000px;
+    width: 500px;
     background-color: lightgray;
     border-radius: 10px;
     position: relative;
@@ -96,7 +96,6 @@ body{
 
 .hobby-output {
     font-family: "Georgia";
-    display: inline;
     position: relative;
     bottom: 430px;
     left: 500px;
@@ -175,4 +174,50 @@ body{
     position: absolute;
     top: 140px;
     left: 60px;
+}
+
+@media (max-width: 600px){
+    /* container full width */
+    .container {
+        width: 95%;
+        margin: 20px auto;
+        height: auto;
+        padding: 10px;
+    }
+
+    /* Reset all absolutely positioned sections */
+    .container .pic,
+    .container .hobbies,
+    .hobby-output,
+    .container .skills,
+    .container .contact {
+        position: static; /* remove absolute */
+        width: 100%;      /* full width */
+        margin: 10px 0;   /* spacing between sections */
+        top: 0;
+        left: 0;
+    }
+
+    /* Make buttons and images responsive */
+    .container .pic img,
+    .hobby-output img {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: 10px auto;
+    }
+
+    .container .hobbies button {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    /* Center contact info */
+    .container .contact i,
+    .container .contact p,
+    .container .contact a {
+        display: block;
+        text-align: center;
+        margin: 5px 0;
+    }
 }
