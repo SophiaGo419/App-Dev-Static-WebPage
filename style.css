@@ -1,35 +1,45 @@
+/* ===================== Desktop Layout ===================== */
+
 /* body style */
-body{
+html {
+    scroll-behavior: smooth;
+}
+
+.back-to-top {
+    display: none;        /* hidden on desktop */
+}
+
+body {
     background-image: url(images/image.png);
     background-repeat: repeat;
     background-size: cover;
+    font-family: Georgia, serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+    
 }
 
-
-
-/* whole container inside h=the body */
+/* whole container */
 .container {
     height: 550px;
-    width: 500px;
+    width: 1000px;
+    max-width: 95%;          /* responsive */
     background-color: lightgray;
     border-radius: 10px;
-    position: relative;
-    top: 100px;
-    left: 250px;
     padding: 10px;
-
+    margin: 100px auto 0 auto;  /* top margin + horizontal centering */
+    position: relative;    /* you can keep it if needed */
 }
 
-.container h1{
+.container h1 {
     text-align: center;
     margin-bottom: 10px;
     font-family: "Tahoma";
 }
 
-
-
 /* Bio section */
-.container .pic{
+.container .pic {
     font-family: "Georgia";
     height: 430px;
     width: 300px;
@@ -41,28 +51,22 @@ body{
     border-radius: 10px;
 }
 
-.container .pic img{
-
+.container .pic img {
     border-radius: 180%;
     margin: auto 50px;
     margin-top: 10px;
-    height: 200px;
-    width: 200px;
+    height: 180px;
+    width: 180px;
 }
 
-.container .pic p{
-    font-size: 15px;
-    margin: 25px;
+.container .pic p {
+    font-size: 14px;
+    margin: 18px;
     text-align: justify;
-
-
 }
-
-
 
 /* Hobbies & Likes section */
-
-.container .hobbies{
+.container .hobbies {
     font-family: "Georgia";
     height: 240px;
     width: 600px;
@@ -71,19 +75,14 @@ body{
     position: absolute;
     top: 85px;
     left: 380px;
-    
 }
 
-.container .hobbies h3{
+.container .hobbies h3 {
     font-family: "Georgia";
     margin: 10px;
 }
 
-.container .hobbies ol{
-    font-family: "Georgia";
-    line-height: 30px;
-}
-.container .hobbies button{
+.container .hobbies button {
     font-family: "Georgia";
     display: block;
     position: relative;
@@ -94,6 +93,7 @@ body{
     width: 70px;
 }
 
+/* Hobby Output */
 .hobby-output {
     font-family: "Georgia";
     position: relative;
@@ -102,10 +102,11 @@ body{
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 6px;
+ 
 
 }
 
-.hobby-output img{
+.hobby-output img {
     height: 140px;
     width: 210px;
     margin-left: 15px;
@@ -114,7 +115,7 @@ body{
 
 
 /* Skills section */
-.container .skills{
+.container .skills {
     font-family: "Georgia";
     font-size: 15px;
     height: 185px;
@@ -126,98 +127,173 @@ body{
     left: 380px;
 }
 
-.container .skills h3{
+.container .skills h3 {
     margin: 10px;
 }
 
-.container .skills ul{
+.container .skills ul {
     line-height: 30px;
 }
 
-
 /* Contact Information section */
-.container .contact{
+.container .contact {
     font-family: "Georgia";
     font-size: 15px;
-    height: 185px;
-    width: 285px;
+    height: 154px;
+    width: 256px;
     border: 1px solid;
     border-radius: 10px;
     position: absolute;
     top: 348px;
     left: 695px;
-
+    padding: 15px;
 }
 
 .container .contact h3{
-    margin: 10px;
+    margin: -5px;
+    margin-bottom: 20px;
 }
 
-.container .contact i{
-    margin: 15px;
-    display: block;
+
+/* Each row (icon + text side by side) */
+.contact-item {
+    display: flex;
+    align-items: center;   /* vertical alignment */
+    gap: 10px;             /* space between icon and text */
+    margin: 15px 0;
 }
 
-.container .contact p{
-    font-family: "Georgia";
-    font-size: 14px;
-    display: block;
-    position: relative;
-    bottom: 140px;
-    left: 60px;
-    line-height: 30px;
+/* Icon size */
+.contact-item i {
+    font-size: 25px;
 }
 
-.container .contact a{
-    font-family: "Georgia";
-    font-size: 15px;
-    position: absolute;
-    top: 140px;
-    left: 60px;
+/* Remove default paragraph spacing */
+.contact-item p {
+    margin: 0;
+    margin-left: 10px;
 }
 
-@media (max-width: 600px){
-    /* container full width */
+
+
+
+/* ===================== Mobile Layout ===================== */
+@media (max-width: 600px) {
+    /* container full width and auto height */
     .container {
         width: 95%;
         margin: 20px auto;
         height: auto;
-        padding: 10px;
+        padding: 15px;
+        left: 0;
+        top: 0;
+        background-color: transparent;
     }
 
-    /* Reset all absolutely positioned sections */
+    /* stack sections vertically and center borders */
     .container .pic,
     .container .hobbies,
     .hobby-output,
     .container .skills,
     .container .contact {
-        position: static; /* remove absolute */
-        width: 100%;      /* full width */
-        margin: 10px 0;   /* spacing between sections */
-        top: 0;
-        left: 0;
+        background-color: lightgray;
+        position: static;
+        width: 90%;           /* narrower than container to show borders centered */
+        margin: 10px auto;    /* auto left/right centers the section */
+        padding: 15px;
+        text-align: center;   /* center text and images inside */
     }
+    
 
-    /* Make buttons and images responsive */
-    .container .pic img,
-    .hobby-output img {
+     .container .pic p{
+        margin: 25px;
+     }
+
+      
+    /* bio image */
+    .container .pic img {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 10px auto;
         display: block;
-        width: 100%;
-        height: auto;
-        margin: 10px auto;
     }
 
+    /* hobby buttons full width */
     .container .hobbies button {
         width: 100%;
         margin: 5px 0;
+        padding: 10px;
+        font-size: 14px;
     }
 
-    /* Center contact info */
-    .container .contact i,
-    .container .contact p,
-    .container .contact a {
+    /* hobby output images responsive */
+    .hobby-output img {
+        width: 100%;
+        max-width: 200px;
+        height: auto;
+        margin: 10px auto;
         display: block;
+    }
+
+    
+.container .skills h3 {
+    margin: 1px;
+}
+
+.container .skills ul {
+    line-height: 35px;
+    text-align: left;
+}
+
+
+/* Each contact row */
+
+
+
+    .container .contact {
+        position: static;
+        width: 90%;
+        margin: 10px auto;}
+
+.container .contact h3{
+    margin: -5px;
+    margin-bottom: 20px;
+}
+
+
+/* Each row (icon + text side by side) */
+.contact-item {
+    display: flex;
+    align-items: center;   /* vertical alignment */
+    gap: 10px;             /* space between icon and text */
+    margin: 15px;
+
+}
+
+/* Icon size */
+.contact-item i {
+    font-size: 25px;
+}
+
+/* Remove default paragraph spacing */
+.contact-item p {
+    margin: 0;
+    margin-left: 10px;
+}
+
+/* Back to Top Button (Mobile Only) */
+ .back-to-top {
+        display: block;   /* visible on mobile */
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 15px;
+        font-size: 14px;
+        color: black;
+        text-decoration: none;
+        border-radius: 25px;
+        z-index: 1000;
         text-align: center;
-        margin: 5px 0;
+        font-size: 25px;
     }
 }

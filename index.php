@@ -12,7 +12,18 @@
 
 
 </head>
-<body>
+
+
+<body id="top">
+
+    <a href="#top" class="back-to-top">^</a>
+
+    <?php
+        $selectedHobby = '';
+        if (isset($_POST['hobby'])) {
+        $selectedHobby = $_POST['hobby'];
+        }
+    ?>
 
     <div class = "container">
         <h1> My Personal Webpage</h1>
@@ -20,6 +31,8 @@
         <!-- Bio Section -->
         <div class="pic">
             <img src="images/mypic.png" alt="No image"> <hr>
+
+            <p>A certified student at USTP-CDO for five years, who is an introvert, resilient, and goal-oriented. </p>
             <p><b>Name:</b> Sophia Bianca R. Go</p>
             <p><b>Age:</b> 20</p>
             <p><b>Course:</b> Bachelor of Science in Information Technology</p>
@@ -32,52 +45,40 @@
         <div class="hobbies">
             <h3>Hobbies & Likes</h3>
 
-            <form method="post">
-            
-
-            <button type="submit" name="hobby" value="reading">Reading</button>
-            <button type="submit" name="hobby" value="movies">Movies</button>
-            <button type="submit" name="hobby" value="sports">Sports</button>
-            <button type="submit" name="hobby" value="music">Music</button>
-        </form>
+            <form method="post" action="#hobbyOutput">
+            <button type="submit" name="hobby" value="reading" <?php if($selectedHobby=='reading') echo 'style="background-color:lightblue;"'; ?>>Reading</button>
+            <button type="submit" name="hobby" value="movies" <?php if($selectedHobby=='movies') echo 'style="background-color:lightblue;"'; ?>>Movies</button>
+            <button type="submit" name="hobby" value="sports" <?php if($selectedHobby=='sports') echo 'style="background-color:lightblue;"'; ?>>Sports</button>
+            <button type="submit" name="hobby" value="music" <?php if($selectedHobby=='music') echo 'style="background-color:lightblue;"'; ?>>Music</button>
+            </form>
 
         </div>
 
         <!-- php code -->
-        <div class="hobby-output">
+         <div class="hobby-output" id="hobbyOutput">
 
-        <?php
-
-        if (isset($_POST['hobby'])) {
-
-
-            if ($_POST['hobby'] == "reading") {
-                echo "<p><b>Reading:</b> Novels, Manhwas, Psychological Books</p>";
-                echo "<img src='images/manhwa.png' alt='No image'>";
-                echo "<img src='images/psychological.png' alt='No image'>";
-                
-            }
-            elseif ($_POST['hobby'] == "movies") {
-                echo "<p><b>Movies:</b> Action, Fantasy, Horror, Thriller, Historical</p>";
-                echo "<img src='images/movies1.png' alt='No image'>";
-                echo "<img src='images/movies2.png' alt='No image'>";
-            }
-            elseif ($_POST['hobby'] == "sports") {
-                echo "<p><b>Sports:</b> Badminton, Basketball</p>";
-                echo "<img src='images/badminton.png' alt='No image'>";
-                echo "<img src='images/basketball.png' alt='No image'>";
-            }
-            elseif ($_POST['hobby'] == "music") {
-                echo "<p><b>Music:</b> Pop, Country, Funk, OPM</p>";
-                echo "<img src='images/pop.png' alt='No image'>";
-                echo "<img src='images/funky.png' alt='No image'>";
-            }
-
-        }
-
-        ?>
+            <?php
+                if ($selectedHobby) {
+                    if ($selectedHobby == "reading") {
+                        echo "<p><b>Reading:</b> Novels, Manhwas, Psychological Books</p>";
+                        echo "<img src='images/manhwa.png' alt='No image'>";
+                        echo "<img src='images/psychological.png' alt='No image'>";
+                } elseif ($selectedHobby == "movies") {
+                        echo "<p><b>Movies:</b> Action, Fantasy, Horror, Thriller, Historical</p>";
+                        echo "<img src='images/movies1.png' alt='No image'>";
+                        echo "<img src='images/movies2.png' alt='No image'>";
+                } elseif ($selectedHobby == "sports") {
+                        echo "<p><b>Sports:</b> Badminton, Basketball</p>";
+                        echo "<img src='images/badminton.png' alt='No image'>";
+                        echo "<img src='images/basketball.png' alt='No image'>";
+                } elseif ($selectedHobby == "music") {
+                        echo "<p><b>Music:</b> Pop, Country, Funk, OPM</p>";
+                        echo "<img src='images/pop.png' alt='No image'>";
+                        echo "<img src='images/funky.png' alt='No image'>";
+                }
+                }
+            ?>
         </div>
-
 
         <!-- Skills Section -->
         <div class="skills">
@@ -92,17 +93,21 @@
         <!-- Contact Information Section -->
         <div class="contact">
             <h3>Contact Information</h3>
-            <i class="fa-regular fa-envelope fa-2x"></i>
-            
-            <i class="fa-solid fa-phone fa-2x"></i>
-            
-            <i class="fa-brands fa-facebook fa-2x"></i>
-           
 
+        <div class="contact-item">
+            <i class="fa-regular fa-envelope"></i>
             <p>go.sophiabianca419@gmail.com</p>
-             <p>09957399238</p> 
-             <a href="https://www.facebook.com/share/1GCPRq65bP/" target="blank">Facebook Page</a>
-            
+        </div>
+
+        <div class="contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <p>09957399238</p>
+        </div>
+
+        <div class="contact-item">
+            <i class="fa-brands fa-facebook"></i>
+            <p>Facebook: Sophia Bianca Go</p>
+        </div>
         </div>
 
     </div>
